@@ -40,7 +40,7 @@ class Task(models.Model):
         ordering = ['-deadline', 'done']
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
-        constraints = [models.UniqueConstraint(fields=['category', 'title'], name='unique constraint')]
+        constraints = [models.UniqueConstraint(fields=['category', 'title'], name='unique together')]
 
     def __str__(self):
         return f'Задача "{self.title}"'

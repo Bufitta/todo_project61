@@ -12,6 +12,22 @@
                   <img src="{% static 'img/check1.webp' %}" alt="Check" width="60">
                   <h2 class="my-4">Список задач {% if category %}для категории "{{ category.title }}"{% endif %}</h2>
               </div>
+              {% if filter_form %}
+                <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <form method="GET">
+                    <div class="input-group">
+                        {% for field in filter_form %}
+                            {{ field|addclass:'form-control' }}
+                        {% endfor %}
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary text-white" type="submit"><i class="fas fa-search"> Выбрать</i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            {% endif %}
             <table class="table text-white mb-0">
               <thead>
                 <tr>

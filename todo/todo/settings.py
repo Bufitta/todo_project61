@@ -124,3 +124,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'project_static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Настройка отправки сообщений через почту yandex, mail, google... Для корректной работы у вас должен быть аккаунт,
+#  открыт доступ для стороннего приложения (смотрите настройки почтового ящика)
+
+# EMAIL_USE_SSL = True
+# EMAIL_PORT = 465
+# EMAIL_HOST = 'smtp.yandex.ru' #Например, smtp.gmail.com
+# EMAIL_HOST_USER = 'user@yandex.ru' #Например, user@gmail.com.
+# EMAIL_HOST_PASSWORD = 'password'
+# SERVER_EMAIL = EMAIL_HOST_USER

@@ -6,9 +6,9 @@
     >cd ~/Dev/
 
 2.  Клонируйте репозиторий с сайта Github:
-    >git clone https://github.com/Bufitta/todo_project.git
+    >git clone https://github.com/Bufitta/todo_project61.git
 
-    У вас создастся папка todo_project, переходим в нее.
+    У вас создастся папка todo_project61, переходим в нее.
 
 
 3.  Создаем виртуальное окружение как в [уроке](https://practicum.yandex.ru/learn/backend-developer/courses/1b78b2c9-df6f-4349-a831-7ef978dd092f/sprints/24404/topics/d0d00761-9dd8-42b1-b5a0-e3bd52f05c51/lessons/775bd6f8-30c7-4ce3-9908-ec54d0098f83/).

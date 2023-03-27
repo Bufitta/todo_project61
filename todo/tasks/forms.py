@@ -6,16 +6,18 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         exclude = ('user', 'done')
-        widgets = {
-            'deadline': forms.NumberInput(attrs={'class': 'form-control', 'type': 'date'})
-        }
-        # labels = {"text": "Текст", "group": "Группа"}
-        help_texts = {
-            'description': 'Опишите задачу как можно подробнее',
-        }
-        # error_messages = {}
+        # labels = {'field_name': 'value'}
+        help_texts = {'description': 'Введите подробное описание'}
+        error_messages = {'title': {'max_length': 'Давай покороче!'}}
+        widgets = {'deadline': forms.NumberInput(attrs={'type': 'date'})}
 
 
 class TaskFilterForm(forms.Form):
     category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False)
-    priority = forms.ChoiceField(choices=Task.PRIORITY_CHOICES, required=False)
+    priority = forms.ChoiceField(choices=[('', 'Все')] + Task.PRIORITY_CHOICES, required=False)
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(TaskFilterForm, self).__init__(*args, **kwargs)
+
+        self.fields['category'].queryset = Category.objects.filter(tasks__user=user).distinct()
