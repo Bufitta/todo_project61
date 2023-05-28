@@ -34,13 +34,24 @@ class Task(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
     done = models.BooleanField(default=False, verbose_name='Сделано')
     priority = models.CharField(max_length=2, choices=PRIORITY_CHOICES, default=LOW, verbose_name='Приоритет')
-    attachment = models.FileField(upload_to='uploads/', verbose_name='Вложение', null=True, blank=True)
 
     class Meta:
         ordering = ['-deadline', 'done']
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
-        constraints = [models.UniqueConstraint(fields=['category', 'title'], name='unique together')]
+        # constraints = [models.UniqueConstraint(fields=['category', 'title'], name='unique together')]
 
     def __str__(self):
         return f'Задача "{self.title}"'
+
+
+class Attachment(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='attachments')
+    file = models.FileField(upload_to='uploads/', verbose_name='Файл')
+
+    class Meta:
+        verbose_name = 'Вложение'
+        verbose_name_plural = 'Вложения'
+
+    def __str__(self):
+        return self.file.name

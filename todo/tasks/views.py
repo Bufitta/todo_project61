@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Task, Category
 from .forms import TaskForm, TaskFilterForm
 
+
 def index(request):
     category = request.GET.get('category')
     priority = request.GET.get('priority')
